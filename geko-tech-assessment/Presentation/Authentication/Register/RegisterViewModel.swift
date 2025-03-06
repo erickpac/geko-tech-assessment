@@ -53,6 +53,16 @@ class RegisterViewModel {
         }
     }
 
+    func resetForm() {
+        email = ""
+        password = ""
+        confirmPassword = ""
+        emailError = ""
+        passwordError = ""
+        confirmPasswordError = ""
+        generalError = ""
+    }
+
     func register() {
         isLoading = true
         generalError = ""
@@ -63,8 +73,11 @@ class RegisterViewModel {
 
                 await MainActor.run {
                     self.isLoading = false
-                    self.registerSuccess = success
-                    if !success {
+                    
+                    if success {
+                        self.registerSuccess = true
+                        self.resetForm()
+                    } else {
                         self.generalError = "No se pudo completar el registro. Inténtalo de nuevo."
                     }
                 }

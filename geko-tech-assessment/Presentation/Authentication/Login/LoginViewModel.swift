@@ -42,6 +42,14 @@ class LoginViewModel {
         passwordError = password.isEmpty ? "" : (Validators.isValidPassword(password) ? "" : "La contraseña debe tener al menos 6 caracteres")
     }
 
+    func resetForm() {
+        email = ""
+        password = ""
+        emailError = ""
+        passwordError = ""
+        generalError = ""
+    }
+
     func login() {
         isLoading = true
         generalError = ""
@@ -52,8 +60,11 @@ class LoginViewModel {
 
                 await MainActor.run {
                     self.isLoading = false
-                    self.loginSuccess = success
-                    if !success {
+
+                    if success {
+                        self.loginSuccess = success
+                        self.resetForm()
+                    } else {
                         self.generalError = "Credenciales incorrectas. Inténtalo de nuevo."
                     }
                 }
