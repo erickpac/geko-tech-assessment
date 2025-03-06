@@ -7,6 +7,26 @@
 
 import Foundation
 
+enum AuthError: Error, LocalizedError {
+    case invalidCredentials
+    case userAlreadyExists
+    case userNotFound
+    case noUserLoggedIn
+
+    var errorDescription: String? {
+        switch self {
+        case .invalidCredentials:
+            return "Credenciales inválidas"
+        case .userAlreadyExists:
+            return "El usuario ya existe"
+        case .userNotFound:
+            return "Usuario no encontrado"
+        case .noUserLoggedIn:
+            return "No hay usuario con sesión iniciada"
+        }
+    }
+}
+
 class AuthRepositoryImpl: AuthRepository {
     private let dataSource: AuthLocalDataSource
 
@@ -16,7 +36,7 @@ class AuthRepositoryImpl: AuthRepository {
 
     func login(email: String, password: String) async throws -> Bool {
         guard let user = try await dataSource.getUser(email: email, password: password) else {
-            throw NSError(domain: "AuthRepository", code: 1, userInfo: [NSLocalizedDescriptionKey: "Credenciales inválidas"])
+            throw AuthError.invalidCredentials
         }
 
         return try await dataSource.updateUserLoginStatus(email: user.email, isLoggedIn: true)
@@ -28,7 +48,7 @@ class AuthRepositoryImpl: AuthRepository {
 
     func logout() async throws -> Bool {
         guard let user = try await dataSource.getLoggedInUser() else {
-            throw NSError(domain: "AuthRepository", code: 3, userInfo: [NSLocalizedDescriptionKey: "No hay usuario con sesión iniciada"])
+            throw AuthError.noUserLoggedIn
         }
 
         return try await dataSource.updateUserLoginStatus(email: user.email, isLoggedIn: false)

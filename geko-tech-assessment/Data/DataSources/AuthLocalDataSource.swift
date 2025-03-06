@@ -31,7 +31,7 @@ class AuthLocalDataSourceImpl: AuthLocalDataSource {
         let existingUsers = try context.fetch(descriptor)
 
         if !existingUsers.isEmpty {
-            throw NSError(domain: "AuthDataSource", code: 2, userInfo: [NSLocalizedDescriptionKey: "El usuario ya existe"])
+            throw AuthError.userAlreadyExists
         }
 
         // Create new user
@@ -69,7 +69,7 @@ class AuthLocalDataSourceImpl: AuthLocalDataSource {
 
         let users = try context.fetch(descriptor)
         guard let user = users.first else {
-            throw NSError(domain: "AuthDataSource", code: 1, userInfo: [NSLocalizedDescriptionKey: "Usuario no encontrado"])
+            throw AuthError.userNotFound
         }
 
         // Update the login status
