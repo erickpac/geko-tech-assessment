@@ -48,13 +48,13 @@ The application follows Clean Architecture principles with MVVM pattern:
 
 ## Technical Highlights
 
-- _Swift Concurrency:_ Using async/await for asynchronous operations
-- _@Observable:_ Leveraging the new Observation framework for reactive UI updates
-- _Actors:_ Thread-safe dependency injection with Swift actors
-- _Factory Methods:_ Clean ViewModel initialization
-- _SwiftData:_ Modern persistence layer for user data
-- _Composable UI:_ Reusable SwiftUI components
-- _MainActor:_ Ensuring UI updates on the main thread
+- **Swift Concurrency:** Using async/await for asynchronous operations
+- **@Observable:** Leveraging the new Observation framework for reactive UI updates
+- **Actors:** Thread-safe dependency injection with Swift actors
+- **Factory Methods:** Clean ViewModel initialization
+- **SwiftData:** Modern persistence layer for user data
+- **Composable UI:** Reusable SwiftUI components
+- **MainActor:** Ensuring UI updates on the main thread
 
 ## Requirements
 
