@@ -31,7 +31,6 @@ class SessionManager {
         do {
             let isLoggedIn = try await authRepository.isUserLoggedIn()
 
-            // Return to the main thread to update the UI
             await MainActor.run {
                 if isLoggedIn {
                     coordinator.navigate(to: .home)
