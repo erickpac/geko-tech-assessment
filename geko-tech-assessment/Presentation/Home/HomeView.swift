@@ -40,8 +40,8 @@ struct HomeView: View {
         .padding(.vertical, 32)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.systemBackground).ignoresSafeArea())
-        .onChange(of: viewModel.logoutSuccess) { success in
-            if success {
+        .onChange(of: viewModel.logoutSuccess) {
+            if viewModel.logoutSuccess {
                 coordinator.popToRoot()
             }
         }

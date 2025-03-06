@@ -47,8 +47,8 @@ struct RegisterView: View {
         .onTapGesture {
             hideKeyboard()
         }
-        .onChange(of: viewModel.registerSuccess) { success in
-            if success {
+        .onChange(of: viewModel.registerSuccess) {
+            if viewModel.registerSuccess {
                 coordinator.popToPrevious()
             }
         }

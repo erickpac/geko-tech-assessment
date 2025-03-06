@@ -47,8 +47,8 @@ struct LoginView: View {
         .onTapGesture {
             hideKeyboard()
         }
-        .onChange(of: viewModel.loginSuccess) { success in
-            if success {
+        .onChange(of: viewModel.loginSuccess) {
+            if viewModel.loginSuccess {
                 coordinator.navigate(to: .home)
             }
         }
