@@ -73,8 +73,8 @@ The application follows Clean Architecture principles with MVVM pattern:
 2. Open the project in Xcode:
 
    ```bash
-   cd ios-auth-app
-   open AuthApp.xcodeproj
+   cd geko-tech-assessment
+   open geko-tech-assessment.xcodeproj
    ```
 
 3. Build and run the project in the Xcode simulator or on a physical device.
