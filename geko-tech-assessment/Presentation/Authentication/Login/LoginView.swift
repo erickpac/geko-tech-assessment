@@ -49,8 +49,15 @@ struct LoginView: View {
         }
         .onChange(of: viewModel.loginSuccess) {
             if viewModel.loginSuccess {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    viewModel.resetForm()
+                }
+
                 coordinator.navigate(to: .home)
             }
+        }
+        .onAppear {
+            viewModel.resetForm()
         }
         .navigationBarBackButtonHidden(true)
     }
