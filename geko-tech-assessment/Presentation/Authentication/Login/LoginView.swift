@@ -107,7 +107,10 @@ struct LoginView: View {
                 title: "Correo Electrónico",
                 text: Binding(
                     get: { viewModel.email },
-                    set: { viewModel.email = $0; viewModel.validateEmail() }
+                    set: {
+                        viewModel.email = $0
+                        viewModel.validateEmail()
+                    }
                 ),
                 placeholder: "ejemplo@correo.com",
                 keyboardType: .emailAddress,
@@ -118,7 +121,10 @@ struct LoginView: View {
                 title: "Contraseña",
                 text: Binding(
                     get: { viewModel.password },
-                    set: { viewModel.password = $0; viewModel.validatePassword() }
+                    set: {
+                        viewModel.password = $0
+                        viewModel.validatePassword()
+                    }
                 ),
                 placeholder: "Tu contraseña",
                 isSecure: true,

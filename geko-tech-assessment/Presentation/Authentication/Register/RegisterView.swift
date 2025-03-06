@@ -100,7 +100,10 @@ struct RegisterView: View {
                 title: "Correo Electrónico",
                 text: Binding(
                     get: { viewModel.email },
-                    set: { viewModel.email = $0; viewModel.validateEmail() }
+                    set: {
+                        viewModel.email = $0
+                        viewModel.validateEmail()
+                    }
                 ),
                 placeholder: "ejemplo@correo.com",
                 keyboardType: .emailAddress,
@@ -128,7 +131,10 @@ struct RegisterView: View {
                 title: "Confirmar Contraseña",
                 text: Binding(
                     get: { viewModel.confirmPassword },
-                    set: { viewModel.confirmPassword = $0; viewModel.validateConfirmPassword() }
+                    set: {
+                        viewModel.confirmPassword = $0
+                        viewModel.validateConfirmPassword()
+                    }
                 ),
                 placeholder: "Repite tu contraseña",
                 isSecure: true,
